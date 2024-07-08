@@ -2,7 +2,6 @@ from mindee import Client, PredictResponse, product
 import mimetypes
 import logging
 
-# Initialize the Mindee client
 mindee_client = Client(api_key="d5db2a5c8805f0e93fab9946a3a872c7")
 
 def parse_number(value):

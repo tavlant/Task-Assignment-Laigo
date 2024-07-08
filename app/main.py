@@ -9,7 +9,7 @@ import mimetypes
 
 app = FastAPI()
 
-# Mount the static files directory
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 SUPPORTED_FILE_TYPES = ["application/pdf", "image/jpeg", "image/png"]
@@ -32,7 +32,7 @@ async def upload_file(file: UploadFile = File(...)):
         os.remove(file_location)
         raise HTTPException(status_code=500, detail=f"Error processing document: {e}")
     
-    os.remove(file_location)  # Clean up the file after processing
+    os.remove(file_location)  
     
     base_file_name = os.path.splitext(file.filename)[0]
     formatted_result = format_and_save_response(result, base_file_name)

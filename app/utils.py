@@ -1,9 +1,9 @@
 import os
 
 def get_downloads_folder():
-    if os.name == 'nt':  # For Windows
+    if os.name == 'nt':  
         return os.path.join(os.path.expanduser('~'), 'Downloads')
-    else:  # For macOS and Linux
+    else:  
         return os.path.join(os.path.expanduser('~'), 'Downloads')
 
 def save_document_to_txt(document_data: str, file_path: str):
@@ -55,16 +55,16 @@ def format_and_save_response(result, base_file_name: str):
     document_name = result.get("document_name", "Unknown Document")
     inference_prediction = result.get("inference_prediction", {})
 
-    # Format the document data
+    
     document_data = format_invoice_data({"inference_prediction": inference_prediction})
 
-    # Get the Downloads directory path
+ 
     output_dir = get_downloads_folder()
 
-    # Define the file path
+ 
     file_path = os.path.join(output_dir, f"{base_file_name}.txt")
 
-    # Save the document data to a text file
+    
     save_document_to_txt(document_data, file_path)
 
     return {
